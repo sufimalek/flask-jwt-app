@@ -1,0 +1,29 @@
+# Virtual environment files
+venv/
+env/
+.venv/
+flask-jwt-app/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Environment variables
+.env
+.env.local
+
+# IDE-specific files
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+*.sqlite3
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
