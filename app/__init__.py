@@ -1,17 +1,20 @@
 from flask import Flask
-from app.config import Config
-from app.extensions import jwt, db
+from .config import Config
+from .extensions import db, jwt
 
-def create_app(config_class=Config):
+def create_app():
     app = Flask(__name__)
-    app.config.from_object(config_class)
+    app.config.from_object(Config)
 
     # Initialize extensions
-    jwt.init_app(app)
     db.init_app(app)
+    jwt.init_app(app)
 
-    # Register blueprints
-    from app.auth.routes import auth_bp
+    # Register Blueprints
+    from .auth.routes import auth_bp
+    from .open_routes import open_bp  # Import the open_bp Blueprint
+
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
+    app.register_blueprint(open_bp, url_prefix='/api')  # Register the open_bp Blueprint
 
     return app

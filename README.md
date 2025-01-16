@@ -27,10 +27,12 @@ flask-jwt-app/
 │   │   └── user_service.py  # User-related business logic
 │   ├── config.py
 │   └── extensions.py
+│   └── open_routes.py
 │
 ├── tests/
 │   ├── __init__.py
 │   └── test_auth.py
+│   └── test_open_route.py
 │
 ├── requirements.txt
 ├── run.py
@@ -160,6 +162,20 @@ curl -X GET http://127.0.0.1:5000/api/auth/protected \
   -H "Authorization: Bearer <your_jwt_token>"
 ```
 
+### 7. Access Open Route
+
+```bash
+curl -X GET http://127.0.0.1:5000/api/welcome
+```
+
+Response:
+
+```json
+{
+    "message": "Welcome to the open route!"
+}
+```
+
 ---
 
 ## How to Share Project Dependencies
@@ -184,6 +200,28 @@ pip install -r requirements.txt
 
 ---
 
+## Running the Tests
+
+```bash
+pip install pytest
+```
+
+Run all test:
+
+```bash
+pytest
+```
+
+To run test for indiviadual file rub below command:
+
+```bash
+pytest tests/test_auth.py
+pytest tests/test_open_routes.py
+```
+
+---
+
+
 ## Best Practices
 
 1. **Exclude Virtual Environment Files**: Add `venv/`, `env/`, and `.venv/` to your `.gitignore` file.
@@ -194,5 +232,5 @@ pip install -r requirements.txt
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU GENERAL PUBLIC LICENSE. See the [LICENSE](LICENSE) file for details.
 

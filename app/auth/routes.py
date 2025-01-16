@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.services.user_service import UserService
+from app.models.user import User
 from app.auth.services import AuthService
 
 auth_bp = Blueprint('auth', __name__)
@@ -84,4 +85,5 @@ def delete_user(user_id):
 def protected():
     current_user = get_jwt_identity()
     user = User.query.filter_by(username=current_user).first()
+    # return jsonify({'message': f'You are accessing a protected route, {current_user}'}), 200
     return jsonify(logged_in_as=current_user, user={"username": user.username, "role": user.role}), 200
